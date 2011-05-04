@@ -20,7 +20,11 @@ class USBDrive(object):
 
   def mount(self):
     print "Waiting for udisks to settle..."
+    # See these links for why we do this:
+    # http://cgit.freedesktop.org/udisks/tree/tests/run#n55
+    # http://cgit.freedesktop.org/udisks/tree/tests/run#n147
     subprocess.call(['udevadm', 'settle'])
+
     print "Mounting %s" % self.dev
     self.mountpoint = self.dev_methods.FilesystemMount('', [])
 

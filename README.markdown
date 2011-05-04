@@ -40,8 +40,11 @@ then resume it when you're done:
 Author
 ------
 Ryan Pavlik
+
  - <rpavlik@iastate.edu>
+
  - <abiryan@ryand.net>
+
  - <http://academic.cleardefinition.com/>
 
 License
@@ -52,3 +55,16 @@ License
 >
 > (See accompanying file `LICENSE_1_0.txt` or copy at
 > <http://www.boost.org/LICENSE_1_0.txt>)
+
+Thanks/Links
+------------
+
+- <http://www.freedesktop.org/wiki/Software/udisks>
+
+- <http://stackoverflow.com/questions/5067005/python-udisks-enumerating-device-information>
+
+- <http://moserei.de/2010/01/08/accessing-devicekit-with-dbus-and-python.html>
+
+- <http://stackoverflow.com/questions/5109879/usb-devices-udev-and-d-bus>
+
+- <http://cgit.freedesktop.org/udisks/tree/tests/run>
