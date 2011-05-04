@@ -6,11 +6,11 @@ class ConfigFileHandler(object):
 
   configdir = "config"
 
-  def __init__(self, drive, hostPath):
+  def __init__(self, drive, hostPaths):
     self.drive = drive
-    self.hostPath = hostPath
+    self.hostPaths = hostPaths
     self.configPath = os.path.join(self.drive.mountpoint, self.configdir)
-    self.devicePath = os.path.join(self.configPath, os.path.basename(hostPath))
+    self.devicePaths = [os.path.join(self.configPath, os.path.basename(hostPath)) for hostPath in self.hostPaths]
 
     try:
       os.makedirs(self.configPath)
@@ -28,13 +28,18 @@ class ConfigFileHandler(object):
     pass
 
   def run(self):
-    if os.path.exists(self.devicePath):
-      self.preUpdate()
-      print "Copying %s to %s" % (self.devicePath, self.hostPath)
-      shutil.copyfile(self.devicePath, self.hostPath)
+    didPreUpdate = False
+    for (devicePath, hostPath) in zip(self.devicePaths, self.hostPaths):
+      if os.path.exists(devicePath):
+        if not didPreUpdate:
+          self.preUpdate()
+          didPreUpdate = True
+
+        print "Copying %s to %s" % (devicePath, hostPath)
+        shutil.copyfile(devicePath, hostPath)
+
+      else:
+        print "Copying %s to %s" % (hostPath, devicePath)
+        shutil.copyfile(hostPath, devicePath)
+    if didPreUpdate:
       self.postUpdate()
-
-    else:
-      print "Copying %s to %s" % (self.hostPath, self.devicePath)
-      shutil.copyfile(self.hostPath, self.devicePath)
-

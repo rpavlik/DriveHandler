@@ -8,7 +8,7 @@ import DriveHandler
 
 class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
   def __init__(self, drive):
-    super(NetworkConfigHandler, self).__init__(drive, "/etc/network/interfaces")
+    super(NetworkConfigHandler, self).__init__(drive, ["/etc/network/interfaces"])
 
   def postUpdate(self):
     print "Restarting networking..."
