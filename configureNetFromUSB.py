@@ -14,15 +14,19 @@ class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
     print "Restarting networking..."
     subprocess.call(["service", "network-manager", "restart"])
 
-def beep():
+def done():
   print "\a"
+
+def problem(ex):
+  print "\a"
+
 # Must come before creating the listener
 DBusGMainLoop(set_as_default=True)
 
 listener = DriveHandler.DeviceListener(
   handlerTypes = [NetworkConfigHandler],
-  postUnmountCallbacks = [beep],
-  exceptionCallbacks = [beep]
+  postUnmountCallbacks = [done],
+  exceptionCallbacks = [problem]
 )
 
 loop = gobject.MainLoop()
