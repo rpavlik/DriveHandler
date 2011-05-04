@@ -1,12 +1,18 @@
 DriveHandler
-------------
+============
 
 <https://github.com/rpavlik/DriveHandler>
+
+Introduction
+------------
 
 Python code to wait for USB devices to be inserted on Linux, mount them,
 run some handlers, then unmount. Written for a headless appliance/server
 to be able to reconfigure from a USB key, shared because there are a lot
 of partial solutions out there.
+
+Using
+-----
 
 To be able to run this on ubuntu-server 11.04 you'll need some extra
 packages. Most of them are probably already installed, so this line is
