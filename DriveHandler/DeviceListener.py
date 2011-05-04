@@ -1,4 +1,5 @@
 import dbus
+from USBDrive import USBDrive
 
 class DeviceListener(object):
   def __init__(self, handlerTypes = [], postUnmountCallbacks = [], exceptionCallbacks = []):

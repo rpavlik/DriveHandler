@@ -1,4 +1,5 @@
 import dbus
+import subprocess
 
 class USBDrive(object):
   def __init__(self, dev):
