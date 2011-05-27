@@ -24,8 +24,9 @@ The `configureNetFromUSB.py` file is an example app using this system.
 It requires running as "sudo" because it restarts networking after:
 otherwise you may not need root privs to run this script. This script
 also requires the "beep" program to provide assistance indicating when
-USB transfers or errors have occurred. A simpler example is in
-`sillyexample.py`.
+USB transfers or errors have occurred. (You'll need the `pcspkr` or
+`snd_pcsp` module loaded to actually hear the sound - add it to
+`/etc/modules`.) A simpler example is in `sillyexample.py`.
 
 You can edit and copy `drivehandler.conf` to `/etc/init` on systems that
 use Upstart (like recent Ubuntu) to make it launch on startup.
