@@ -20,6 +20,9 @@ logging.basicConfig(filename='/var/log/drivehandler', format='%(asctime)s %(mess
 logging.info("Importing DriveHandler")
 import DriveHandler
 
+logging.info("Setting config dir")
+DriveHandler.ConfigFileHandler.configdir = "nosalt-configfiles"
+
 class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
   def __init__(self, drive):
     super(NetworkConfigHandler, self).__init__(drive, ["/etc/network/interfaces"])
