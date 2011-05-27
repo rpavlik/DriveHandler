@@ -13,6 +13,11 @@ import gobject
 from dbus.mainloop.glib import DBusGMainLoop
 import subprocess
 
+import logging
+logging.basicConfig(filename='/var/log/drivehandler', format='%(asctime)s %(message)s', level=logging.INFO)
+
+
+logging.info("Importing DriveHandler")
 import DriveHandler
 
 class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
@@ -25,18 +30,28 @@ class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
 
 def done():
   print "\a"
+  logging.info("Done with something!")
 
 def problem(ex):
   print "\a"
+  logging.error("Problem reported by devicelistener.", ex)
 
+logging.info("Setting DBusGMainLoop as default")
 # Must come before creating the listener
 DBusGMainLoop(set_as_default=True)
 
+
+logging.info("Creating DeviceListener")
 listener = DriveHandler.DeviceListener(
   handlerTypes = [NetworkConfigHandler],
   postUnmountCallbacks = [done],
   exceptionCallbacks = [problem]
 )
 
+
+logging.info("Creating mainloop")
 loop = gobject.MainLoop()
+
+logging.info("Starting DriveHandler mainloop...")
 loop.run()
+logging.info("DriveHandler exiting...")
