@@ -37,10 +37,13 @@ class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
 def done():
   print "\a"
   logging.info("Done with something!")
+  subprocess.call(["beep"])
 
 def problem(ex):
   print "\a"
   logging.error("Problem reported by devicelistener.", ex)
+  subprocess.call(["beep", "-r", "3"])
+
 
 logging.info("Setting DBusGMainLoop as default")
 # Must come before creating the listener
