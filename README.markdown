@@ -42,6 +42,13 @@ then resume it when you're done:
 
 > killall -CONT gvfs-gdu-volume-monitor
 
+Known Issues
+------------
+It initially attempts to mount USB devices that have a partition table
+as just the bare device, which will display an exception. This is
+reasonably harmless - it will also mount and handle the partition on the
+device just fine.
+
 Author
 ------
 Ryan Pavlik
