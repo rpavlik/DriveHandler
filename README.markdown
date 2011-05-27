@@ -21,9 +21,14 @@ longer than strictly necessary for most.
 > sudo apt-get install python python-gobject python-dbus dbus udisks
 
 The `configureNetFromUSB.py` file is an example app using this system.
-It requires running as "sudo" because it restarts network-manager after:
-otherwise you may not need root privs to run this script. A simpler
-example is in `sillyexample.py`.
+It requires running as "sudo" because it restarts networking after:
+otherwise you may not need root privs to run this script. This script
+also requires the "beep" program to provide assistance indicating when
+USB transfers or errors have occurred. A simpler example is in
+`sillyexample.py`.
+
+You can edit and copy `drivehandler.conf` to `/etc/init` on systems that
+use Upstart (like recent Ubuntu) to make it launch on startup.
 
 Uses python-dbus to access udisks (formerly DeviceKit-disks). Works on
 Ubuntu 10.04 and Ubuntu Server 11.04, that's all I've tested.
