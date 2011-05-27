@@ -25,11 +25,14 @@ DriveHandler.ConfigFileHandler.configdir = "nosalt-configfiles"
 
 class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
   def __init__(self, drive):
-    super(NetworkConfigHandler, self).__init__(drive, ["/etc/network/interfaces"])
+    super(NetworkConfigHandler, self).__init__(drive, ["/etc/network/interfaces", "/etc/resolv.conf"])
 
   def postUpdate(self):
-    print "Restarting networking..."
-    subprocess.call(["service", "network-manager", "restart"])
+    logging.info("Got an update, stopping networking...")
+    subprocess.call(["service", "networking", "stop"])
+
+    logging.info("Starting networking again...")
+    subprocess.call(["service", "networking", "start"])
 
 def done():
   print "\a"
