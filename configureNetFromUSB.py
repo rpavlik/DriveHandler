@@ -34,6 +34,17 @@ class NetworkConfigHandler(DriveHandler.ConfigFileHandler):
     logging.info("Starting networking again...")
     subprocess.call(["service", "networking", "start"])
 
+class VRPNConfigHandler(DriveHandler.ConfigFileHandler):
+  def __init__(self, drive):
+    super(VRPNConfigHandler, self).__init__(drive, ["/opt/vrpn-wiimote/etc/vrpn.cfg"])
+
+  def postUpdate(self):
+    logging.info("Got an update, stopping VRPN...")
+    subprocess.call(["service", "vrpn", "stop"])
+
+    logging.info("Starting VRPN again...")
+    subprocess.call(["service", "vrpn", "start"])
+
 def done():
   print "\a"
   logging.info("Done with something!")
@@ -52,7 +63,7 @@ DBusGMainLoop(set_as_default=True)
 
 logging.info("Creating DeviceListener")
 listener = DriveHandler.DeviceListener(
-  handlerTypes = [NetworkConfigHandler],
+  handlerTypes = [NetworkConfigHandler, VRPNConfigHandler],
   postUnmountCallbacks = [done],
   exceptionCallbacks = [problem]
 )
