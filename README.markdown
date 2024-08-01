@@ -3,6 +3,15 @@ DriveHandler
 
 <https://github.com/rpavlik/DriveHandler>
 
+Project Status
+--------------
+
+This was worthwhile and worked when I last used it.
+However, I have moved on, no longer use this or know if it is valuable,
+and have no capacity to meaningfully maintain it.
+
+**Unmaintained**
+
 Introduction
 ------------
 
@@ -52,13 +61,11 @@ device just fine.
 
 Author
 ------
-Ryan Pavlik
+Rylie Pavlik
 
- - <rpavlik@iastate.edu>
+ - <rylie@ryliepavlik.com>
 
- - <abiryan@ryand.net>
-
- - <http://academic.cleardefinition.com/>
+ - <http://ryliepavlik.com/>
 
 License
 -------
